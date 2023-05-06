@@ -7,7 +7,6 @@ class DBController
     private $dbPass = "";
     private $dbName = "bug_tracking";
     public $connection;
-
     public function openConnect()
     {
         $this->connection = new mysqli($this->dbHost, $this->dbUser, $this->dbPass, $this->dbName);

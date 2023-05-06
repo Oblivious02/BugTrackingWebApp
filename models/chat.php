@@ -22,11 +22,11 @@ $s = mysqli_query($conn, $query);
 while ($res = mysqli_fetch_assoc($s)) {
     if ($res['senderID'] == $_REQUEST['sID'] && $res['recipientID'] == $_REQUEST['rID']) {
         echo $_SESSION['Name'];
-        echo "<br>";
+        echo '<br>';
         // $_SESSION['place'] = 1;
         // $place = 1;
         echo $res['message'];
-        echo "<br>";
+        echo '<br style= "margin-top:10px;">';
         // echo "<br>";
         echo "<hr>";
     } elseif ($res['senderID'] == $_REQUEST['rID']) {
@@ -34,7 +34,7 @@ while ($res = mysqli_fetch_assoc($s)) {
         echo "Staff";
         echo "<br>";
         echo $res['message'];
-        echo "<br>";
+        echo '<br style= "margin-top:10px;">';
         // echo "<br>";
         echo "<hr>";
     }

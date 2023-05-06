@@ -123,36 +123,15 @@ $staffs = $admin->getAllStaff();
                                         // if (!empty($_GET['buttonPeople'])) {
                                         //     if ($res["recipientID"] == $_GET['buttonPeople']) {
                                         ?>
-                                        <li class="clearfix">
-                                            <div class="message-data text-right">
-                                                <span class="message-data-time">10:10 AM, Today</span>
-                                                <img src="images/avatar2.png" alt="avatar">
-                                            </div>
-                                            <?php
-                                            ?>
-                                            <div class="message other-message float-right">
-                                                <br>
-                                                <?php
-                                                if ($_SESSION['place'] == 1) {
-                                                    ?>
-                                                    <p id="txt"></p>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </div>
-                                        </li>
-                                        <?php
-                                        //     }
-                                        // }
-                                        ?>
+
                                         <?php
                                         // if ($res["senderID"] == $_GET['buttonPeople']) {
                                         ?>
                                         <li class="clearfix">
                                             <div class="message-data">
-                                                <span class="message-data-time">10:12 AM, Today</span>
+                                                <span class="message-data-time">Start Boot</span>
                                             </div>
-                                            <div class="message my-message">
+                                            <div class="message my-message w-100">
                                                 <?php
                                                 if ($_SESSION['sec']) {
                                                     ?>
