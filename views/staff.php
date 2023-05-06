@@ -13,6 +13,8 @@ if (!isset($_SESSION['userType'])) {
     print_r($_SESSION['Name']);
     print_r($_SESSION['userType']);
 }
+/* ------------------------------------ } ----------------------------------- */
+
 ?>
 
 <?php include "../views/includes/footer.php"; ?>
