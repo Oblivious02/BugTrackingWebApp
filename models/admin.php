@@ -29,6 +29,39 @@ class Admin extends User
             return false;
         }
     }
+    public function getStaffChat()
+    {
+        $db = new DBController;
+        if ($db->openConnect()) {
+            $query = "SELECT * FROM user WHERE typeID>0";
+            return $db->select($query);
+        } else {
+            echo "error database connection";
+            return false;
+        }
+    }
+    public function chatName($id)
+    {
+        $db = new DBController;
+        if ($db->openConnect()) {
+            $query = "SELECT name FROM user WHERE staffID='$id'";
+            return $db->select($query);
+        } else {
+            echo "error database connection";
+            return false;
+        }
+    }
+    public function getCustomerChat()
+    {
+        $db = new DBController;
+        if ($db->openConnect()) {
+            $query = "SELECT * FROM user WHERE typeID=0";
+            return $db->select($query);
+        } else {
+            echo "error database connection";
+            return false;
+        }
+    }
     public function deleteUser($id)
     {
         $db = new DBController;

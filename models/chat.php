@@ -21,7 +21,7 @@ $query = "SELECT * FROM messages";
 $s = mysqli_query($conn, $query);
 while ($res = mysqli_fetch_assoc($s)) {
     if ($res['senderID'] == $_REQUEST['sID'] && $res['recipientID'] == $_REQUEST['rID']) {
-        echo $_SESSION['Name'];
+        echo "Me";
         echo '<br>';
         // $_SESSION['place'] = 1;
         // $place = 1;
@@ -31,7 +31,7 @@ while ($res = mysqli_fetch_assoc($s)) {
         echo "<hr>";
     } elseif ($res['senderID'] == $_REQUEST['rID']) {
         // $place = 2;
-        echo "Staff";
+        echo "Another";
         echo "<br>";
         echo $res['message'];
         echo '<br style= "margin-top:10px;">';

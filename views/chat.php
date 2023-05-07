@@ -4,23 +4,29 @@ if (!isset($_SESSION['userType'])) {
     header("location: login.php");
 } else {
 
-    if ($_SESSION['userType'] != 1) {
-        header("location: login.php");
+    // if ($_SESSION['userType'] != 1) {
+    //     header("location: login.php");
+    // }
+    $pageTitle = 'Chat';
+    require_once "../views/includes/navbar.php";
+    require_once '../models/user.php';
+    // require_once '../models/chat.php';   
+    require_once '../controllers/MainController.php';
+    require_once '../models/admin.php';
+    // $place = 0;
+
+    $user = new User;
+    // $chat = new Chat;
+    $admin = new Admin;
+    // $messages = getAllMessage();
+    if ($_SESSION['userType'] == 1) {
+        $staffs = $admin->getAllStaff();
+    } elseif ($_SESSION['userType'] == 0) {
+        $staffs = $admin->getStaffChat();
+    } else {
+        $staffs = $admin->getCustomerChat();
     }
 }
-$pageTitle = 'Chat';
-require_once "../views/includes/navbar.php";
-require_once '../models/user.php';
-// require_once '../models/chat.php';   
-require_once '../controllers/MainController.php';
-require_once '../models/admin.php';
-// $place = 0;
-
-$user = new User;
-// $chat = new Chat;
-$admin = new Admin;
-// $messages = getAllMessage();
-$staffs = $admin->getAllStaff();
 
 // if (isset($_POST['msgContent'])) {
 //     if (!empty($_POST['msgContent'])) {
@@ -91,11 +97,8 @@ $staffs = $admin->getAllStaff();
                                             <div class="chat-about">
                                                 <h6 class="m-b-0">
                                                     <?php
-                                                    if (isset($_POST['buttonPeople'])) {
-                                                        if (!empty($_POST['staffChatID'])) {
-                                                            echo $_POST['staffChatName'];
-                                                        }
-                                                    }
+                                                    $name = $admin->chatName($_GET['buttonPeople']);
+                                                    echo $name[0]['name'];
                                                     ?>
                                                 </h6>
                                                 <small>Last seen: 2 hours ago</small>
