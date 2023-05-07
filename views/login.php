@@ -22,7 +22,7 @@ if (isset($_POST['emailUser']) && isset($_POST['password'])) {
         $user->setUsername($_POST['emailUser']);
         $user->setPassword($_POST['password']);
         if (!$main->login($user)) {
-            if (isset($_SESSION["staffID"])) {
+            if (isset($_SESSION["userID"])) {
                 session_start();
             }
             $errMsg = $_SESSION['errMsg'];

@@ -133,13 +133,13 @@ $staffs = $admin->getAllStaff();
                                             </div>
                                             <div class="message my-message w-100">
                                                 <?php
-                                                if ($_SESSION['sec']) {
-                                                    ?>
-                                                    <p id="txt"></p>
-                                                    <?php
-                                                    // echo $message["message"];
-                                                    echo "<br>";
-                                                }
+                                                // if ($_SESSION['sec']) {
+                                                ?>
+                                                <p id="txt"></p>
+                                                <?php
+                                                // echo $message["message"];
+                                                echo "<br>";
+                                                // }
                                                 ?>
                                             </div>
                                         </li>

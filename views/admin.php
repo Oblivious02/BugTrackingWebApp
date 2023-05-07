@@ -151,7 +151,6 @@ if (!isset($_SESSION['userType'])) {
 
                                 <!-- Table with stripped rows -->
                                 <?php
-
                                 if (count($staffs) == 0) {
                                     ?>
                                     <div class="alert alert-danger" role="alert">
@@ -192,7 +191,7 @@ if (!isset($_SESSION['userType'])) {
                                                     </td>
                                                     <td>
                                                         <form action="admin.php" method="POST">
-                                                            <input type="hidden" name="staffID"
+                                                            <input type="text" name="staffID"
                                                                 value="<?php echo $staff["staffID"] ?>">
                                                             <button class="btn btn-outline-danger" name="delete">
                                                                 <i class="ri-delete-back-2-line"></i>

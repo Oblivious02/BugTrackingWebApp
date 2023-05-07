@@ -1,38 +1,41 @@
 <?php
-include "../models/functions/functions.php";
-$pageTitle = 'Staff';
+
 session_start();
 if (!isset($_SESSION['userType'])) {
     header("location: login.php");
 } else {
-
+    $i = 1;
     if ($_SESSION['userType'] != 0) {
         header("location: login.php");
     }
     // include "../views/includes/navbar.php";
+    include "../models/functions/functions.php";
     require_once '../models/user.php';
     require_once '../controllers/MainController.php';
+    require_once '../models/admin.php';
     require_once '../models/staff.php';
-    $i = 1;
     $staff = new Staff;
-    $pageTitle = 'Staff';
-    $staffs = $staff->getMyBugs($_SESSION['userID']);
-    if (isset($_POST['raiseBug'])) {
-        if (!empty($_POST['bugID'])) {
-            $_SESSION['idOfBug'] = $_POST['bugID'];
-            header('location: assignBugAnotherStaff.php');
-        }
-    }
-    if (isset($_POST['solved'])) {
-        if (!empty($_POST['bugID'])) {
-            // $_SESSION['idOfBug'] = $_POST['bugID'];
-            $staff->updateSolve($_POST['bugID']);
-            // header('location: assignBugAnotherStaff.php');
+    $admin = new Admin;
+    $user = new User;
+    $pageTitle = 'RaiseBug';
+    $staffs = $admin->getAllStaff();
+    $deleted = false;
+    if (isset($_POST['raiseTheBug'])) {
+        if (!empty($_POST['staffID']) && !empty($_POST['staffUsername']) && !empty($_POST['staffPassword']) && !empty($_POST['staffName'])) {
+            $user->setUserID($_POST['staffID']);
+            $user->setUsername($_POST['staffUsername']);
+            $user->setPassword($_POST['staffPassword']);
+            $user->setName($_POST['staffName']);
+            if ($staff->raiseToAnotherStaff($user)) {
+                $staffs = $admin->getAllStaff();
+            } else {
+                echo "error";
+            }
         }
     }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,6 +86,12 @@ if (!isset($_SESSION['userType'])) {
 </head>
 
 <body>
+
+    <!-- ======= Header ======= -->
+    <!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <!-- End Sidebar-->
     <nav class="navbar bg-body-secondary sticky-top na" data-bs-theme="dark">
         <div class="container">
             <a class="navbar-brand" href="#">BugTracking</a>
@@ -99,7 +108,7 @@ if (!isset($_SESSION['userType'])) {
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="admin.php">Raise to another</a>
+                            <a class="nav-link active" aria-current="page" href="admin.php">Edit members</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="chat.php">Messages</a>
@@ -110,10 +119,10 @@ if (!isset($_SESSION['userType'])) {
                                 Profile
                             </a>
                             <ul class="dropdown-menu">
-                                <!-- <li><a class="dropdown-item" href="show-bug.php">Solve bug</a></li> -->
-                                <!-- <li>
+                                <li><a class="dropdown-item" href="show-bug.php">Show Bugs</a></li>
+                                <li>
                                     <hr class="dropdown-divider">
-                                </li> -->
+                                </li>
                                 <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                             </ul>
                         </li>
@@ -138,18 +147,19 @@ if (!isset($_SESSION['userType'])) {
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
+                                <!-- <div class="d-flex justify-content-between align-items-center">
                                     <h5 class="card-title">All staff is here</h5>
                                     <div class="stuff-operator">
-                                        <!-- <a href="add-staff.php">
+                                        <a href="add-staff.php">
                                             <button type="button" class="btn btn-primary add-button">Add new
                                                 staff</button>
-                                        </a> -->
+                                        </a>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <!-- Table with stripped rows -->
                                 <?php
+
                                 if (count($staffs) == 0) {
                                     ?>
                                     <div class="alert alert-danger" role="alert">
@@ -162,13 +172,10 @@ if (!isset($_SESSION['userType'])) {
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">My Id</th>
-                                                <th scope="col">Customer Id</th>
-                                                <th scope="col">bugTitle</th>
-                                                <th scope="col">bugDetails</th>
-                                                <th scope="col">Raise To Another</th>
-                                                <th scope="col">Solve the bug</th>
-                                                <th scope="col">solved??</th>
+                                                <th scope="col">Username</th>
+                                                <th scope="col">Password</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -183,43 +190,28 @@ if (!isset($_SESSION['userType'])) {
                                                         <?php echo $i++; ?>
                                                     </th>
                                                     <td>
-                                                        <?php echo $staff["staffAssignedID"] ?>
+                                                        <?php echo $staff["username"] ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $staff["customerReportedID"] ?>
+                                                        <?php echo $staff["password"] ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $staff["bug title"] ?>
+                                                        <?php echo $staff["name"] ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $staff["bug details"] ?>
-                                                    </td>
-                                                    <td>
-                                                        <form action="staff.php" method="POST">
-                                                            <input type="hidden" name="bugID"
-                                                                value="<?php echo $staff["bugID"] ?>">
-                                                            <button class="btn btn-outline-primary" name="raiseBug">
-                                                                List Staff/Raise
+                                                        <form action="assign-bug.php" method="POST">
+                                                            <input type="hidden" name="staffID"
+                                                                value="<?php echo $staff["staffID"] ?>">
+                                                            <input type="hidden" name="staffUsername"
+                                                                value="<?php echo $staff["username"] ?>">
+                                                            <input type="hidden" name="staffPassword"
+                                                                value="<?php echo $staff["password"] ?>">
+                                                            <input type="hidden" name="staffName"
+                                                                value="<?php echo $staff["name"] ?>">
+                                                            <button class="btn btn-outline-success" name="raiseTheBug">
+                                                                <i class="fa-solid fa-check"></i> Raise
                                                             </button>
                                                         </form>
-                                                    </td>
-                                                    <td>
-                                                        <form action="staff.php" method="POST">
-                                                            <input type="hidden" name="bugID"
-                                                                value="<?php echo $staff["bugID"] ?>">
-                                                            <button class="btn btn-outline-success" name="solved">
-                                                                solve
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                        if ($staff["solved"] == 1) {
-                                                            echo "solved";
-                                                        } else {
-                                                            echo "waiting to solve";
-                                                        }
-                                                        ?>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -232,13 +224,13 @@ if (!isset($_SESSION['userType'])) {
 
                                 ?>
                                 <?php
-                                //  if ($deleted == true) {
-                                ?>
-                                <!-- <div class="alert alert-success" role="alert">
+                                if ($deleted == true) {
+                                    ?>
+                                    <div class="alert alert-success" role="alert">
                                         the staff has been deleted
-                                    </div> -->
-                                <?php
-                                // }
+                                    </div>
+                                    <?php
+                                }
                                 ?>
 
                             </div>
@@ -250,6 +242,14 @@ if (!isset($_SESSION['userType'])) {
 
         </main><!-- End #main -->
     </div>
+
+    <!-- ======= Footer ======= -->
+    <!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
     <script src="../views/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="../views/admin/assets/vendor/chart.js/chart.umd.js"></script>
     <script src="../views/admin/assets/vendor/echarts/echarts.min.js"></script>
@@ -262,6 +262,7 @@ if (!isset($_SESSION['userType'])) {
 
     <!-- Template Main JS File -->
     <script src="../views/admin/assets/js/main.js"></script>
+
 </body>
 
 </html>

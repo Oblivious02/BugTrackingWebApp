@@ -11,7 +11,7 @@ if (!isset($_SESSION['userType'])) {
 $pageTitle = 'Bugs';
 require_once "../views/includes/navbar.php";
 require_once '../models/user.php';
-require_once '../models/chat.php';
+// require_once '../models/chat.php';
 require_once '../controllers/MainController.php';
 require_once '../models/bug.php';
 $bug = new Bug;
@@ -40,10 +40,10 @@ if (isset($_POST['raise'])) {
                             <div class="d-flex justify-content-between align-items-center">
                                 <h5 class="card-title">All Bugs is here</h5>
                                 <div class="stuff-operator">
-                                    <a href="assign-bug.php">
+                                    <!-- <a href="assign-bug.php">
                                         <button type="button" class="btn btn-primary add-button">Add new
                                             staff</button>
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
 

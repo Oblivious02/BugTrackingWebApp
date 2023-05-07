@@ -1,6 +1,6 @@
 <?php
 include "../models/functions/functions.php";
-$pageTitle = 'Bug Tracking';
+$pageTitle = 'Raise bug';
 session_start();
 if (!isset($_SESSION['userType'])) {
     header("location: login.php");
@@ -10,6 +10,25 @@ if (!isset($_SESSION['userType'])) {
         header("location: login.php");
     }
     // include "../views/includes/navbar.php";
+}
+$errMsg = "";
+require_once '../models/user.php';
+require_once '../controllers/MainController.php';
+require_once '../models/customer.php';
+if (isset($_POST['bugTitle']) && isset($_POST['bugDetails'])) {
+    if (!empty($_POST['bugTitle']) && !empty($_POST['bugDetails'])) {
+        $user = new User;
+        $customer = new Customer;
+        $user->setUserID($_SESSION['userID']);
+        $customer->setBugDetails($_POST['bugDetails']);
+        $customer->setBugTitle($_POST['bugTitle']);
+        if ($customer->raiseBug($user)) {
+            header("location: showMyBug.php");
+        } else {
+            $errMsg = "something wrong.... try again";
+        }
+    }
+    $errMsg = "Please fill all the data";
 }
 ?>
 <!DOCTYPE html>
@@ -105,11 +124,60 @@ if (!isset($_SESSION['userType'])) {
             </div>
         </div>
     </nav>
-    <!-- ------------------------------- start html ------------------------------- -->
+
+    <!-- ------------------------------- start form ------------------------------- -->
+    <div class="container">
+        <main id="main" class="main show-admin">
+            <div class="pagetitle title-up">
+                <h1>Enter the data about staff</h1>
+            </div><!-- End Page Title -->
+            <section class="section">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php
+
+                                if ($errMsg != "") {
+                                    ?>
+                                
+                                    <div class="alert alert-danger" role="alert">
+                                        <?php echo $errMsg ?>
+                                    </div>
+                                
+                                    <?php
+                                }
+                                ?></h5>
+
+                                <!-- Vertical Form -->
+                                <form class="row g-3" action="raise-bug.php" method="POST">
+                                    <div class="col-12">
+                                        <label for="inputNanme4" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="inputNanme4" name="bugTitle" autocomplete="off">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="inputEmail4" class="form-label">Details</label>
+                                        <input type="text" class="form-control" id="inputEmail4" name="bugDetails" autocomplete="off">
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="reset" class="btn btn-secondary">Reset</button>
+                                    </div>
+                                </form><!-- Vertical Form -->
+
+                            </div>
+                        </div>
 
 
+                    </div>
+                </div>
+            </section>
 
-    <!-- ------------------------------- end html ------------------------------- -->
+        </main><!-- End #main -->
+    </div>
+    <!-- ------------------------------- end form ------------------------------- -->
+
     <script src="../views/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="../views/admin/assets/vendor/chart.js/chart.umd.js"></script>
     <script src="../views/admin/assets/vendor/echarts/echarts.min.js"></script>

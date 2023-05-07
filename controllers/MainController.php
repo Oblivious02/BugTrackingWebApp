@@ -27,7 +27,7 @@ class MainController
                     $_SESSION['Name'] = $result[0]["name"];
                     $_SESSION['userType'] = $result[0]["typeID"];
                     $_SESSION['userName'] = $result[0]["username"];
-                    $_SESSION['password'] = $result[0]["password"];
+                    // $_SESSION['password'] = $result[0]["password"];
                     $this->db->closeConnect();
                     return true;
                 }
