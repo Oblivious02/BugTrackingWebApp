@@ -52,9 +52,7 @@ if (!isset($_SESSION['userType'])) {
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <!-- <link href="../views/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -86,12 +84,10 @@ if (!isset($_SESSION['userType'])) {
     <nav class="navbar bg-body-secondary sticky-top na" data-bs-theme="dark">
         <div class="container">
             <a class="navbar-brand" href="#">BugTracking</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menubar</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -105,8 +101,7 @@ if (!isset($_SESSION['userType'])) {
                             <a class="nav-link" href="chat.php">Messages</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile
                             </a>
                             <ul class="dropdown-menu">
@@ -151,24 +146,25 @@ if (!isset($_SESSION['userType'])) {
                                 <!-- Table with stripped rows -->
                                 <?php
                                 if (count($staffs) == 0) {
-                                    ?>
+                                ?>
                                     <div class="alert alert-danger" role="alert">
                                         There is no any staff
                                     </div>
-                                    <?php
+                                <?php
                                 } else {
-                                    ?>
+                                ?>
                                     <table class="table datatable">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
+                                                <th scope="col">Bug ID</th>
                                                 <th scope="col">My Id</th>
                                                 <th scope="col">Customer Id</th>
                                                 <th scope="col">bugTitle</th>
                                                 <th scope="col">bugDetails</th>
                                                 <th scope="col">Raise To Another</th>
                                                 <th scope="col">Solve the bug</th>
-                                                <th scope="col">solved??</th>
+                                                <th scope="col">Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -177,11 +173,14 @@ if (!isset($_SESSION['userType'])) {
                                             <!-- End Table with stripped rows -->
                                             <?php
                                             foreach ($staffs as $staff) {
-                                                ?>
+                                            ?>
                                                 <tr>
                                                     <th scope="row">
                                                         <?php echo $i++; ?>
                                                     </th>
+                                                    <td>
+                                                        <?php echo $staff["bugID"]; ?>
+                                                    </td>
                                                     <td>
                                                         <?php echo $staff["staffAssignedID"] ?>
                                                     </td>
@@ -196,8 +195,7 @@ if (!isset($_SESSION['userType'])) {
                                                     </td>
                                                     <td>
                                                         <form action="staff.php" method="POST">
-                                                            <input type="hidden" name="bugID"
-                                                                value="<?php echo $staff["bugID"] ?>">
+                                                            <input type="hidden" name="bugID" value="<?php echo $staff["bugID"] ?>">
                                                             <button class="btn btn-outline-primary" name="raiseBug">
                                                                 List Staff/Raise
                                                             </button>
@@ -205,29 +203,28 @@ if (!isset($_SESSION['userType'])) {
                                                     </td>
                                                     <td>
                                                         <form action="staff.php" method="POST">
-                                                            <input type="hidden" name="bugID"
-                                                                value="<?php echo $staff["bugID"] ?>">
+                                                            <input type="hidden" name="bugID" value="<?php echo $staff["bugID"] ?>">
                                                             <button class="btn btn-outline-success" name="solved">
-                                                                solve
+                                                                Solve
                                                             </button>
                                                         </form>
                                                     </td>
                                                     <td>
                                                         <?php
-                                                        if ($staff["solved"] == 1) {
-                                                            echo "solved";
+                                                        if ($staff["status"] == 1) {
+                                                            echo "Solved";
                                                         } else {
-                                                            echo "waiting to solve";
+                                                            echo "Pending a solution";
                                                         }
                                                         ?>
                                                     </td>
                                                 </tr>
-                                                <?php
+                                            <?php
                                             }
                                             ?>
                                         </tbody>
                                     </table>
-                                    <?php
+                                <?php
                                 }
 
                                 ?>
