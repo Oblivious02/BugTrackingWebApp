@@ -200,25 +200,23 @@ if (!isset($_SESSION['userType'])) {
                     </div>
                     <div class="w-33">
                         <div class="team-player">
-                            <img src="images/women/salma.png" alt="salma-photo" class="team-player__img">
+                            <img src="../views/images/us/ziad.jpg" alt="kahrba-photo" class="team-player__img">
                             <div class="team-player__content">
-                                <h3 class="team-player__name">salma osama</h3>
+                                <h3 class="team-player__name">Ziad Mohamed</h3>
                                 <span class="team-player__line"></span>
-                                <p class="team-player__club">wadi degla</p>
-                                <a href="salma.html"><button type="button"
-                                        class="btn btn-outline-primary team-player__button">read more</button></a>
+                                <p class="team-player__club">full stack developer</p>
+
                             </div>
                         </div>
                     </div>
                     <div class="w-33">
                         <div class="team-player">
-                            <img src="images/men/ehab.png" alt="AhmedEhab-photo" class="team-player__img">
+                            <img src="../views/images/us/oona.jpg" alt="oona-photo" class="team-player__img">
                             <div class="team-player__content">
-                                <h3 class="team-player__name">ahmed ehab</h3>
+                                <h3 class="team-player__name">Abdelrhman</h3>
                                 <span class="team-player__line"></span>
-                                <p class="team-player__club">wadi degla</p>
-                                <a href="ahmed-ehab.html"><button type="button"
-                                        class="btn btn-outline-primary team-player__button">read more</button></a>
+                                <p class="team-player__club">full stack developer</p>
+
                             </div>
                         </div>
                     </div>
