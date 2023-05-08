@@ -13,7 +13,7 @@ if (isset($_POST['emailUser']) && isset($_POST['password']) && isset($_POST['nam
         $user = new User;
         $admin = new Admin;
         $user->setUsername($_POST['emailUser']);
-        $user->setPassword($_POST['password']);
+        $user->setPassword(md5($_POST['password']));
         $user->setName($_POST['nameUser']);
         if ($admin->addUser($user)) {
             header("location: admin.php");
@@ -44,9 +44,7 @@ if (isset($_POST['emailUser']) && isset($_POST['password']) && isset($_POST['nam
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="../views/admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -78,12 +76,10 @@ if (isset($_POST['emailUser']) && isset($_POST['password']) && isset($_POST['nam
     <nav class="navbar bg-body-secondary sticky-top na" data-bs-theme="dark">
         <div class="container">
             <a class="navbar-brand" href="#">BugTracking</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menubar</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -97,8 +93,7 @@ if (isset($_POST['emailUser']) && isset($_POST['password']) && isset($_POST['nam
                             <a class="nav-link" href="#">Link</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile
                             </a>
                             <ul class="dropdown-menu">
@@ -132,16 +127,17 @@ if (isset($_POST['emailUser']) && isset($_POST['password']) && isset($_POST['nam
                             <div class="card-body">
                                 <h5 class="card-title"><?php
 
-                                if ($errMsg != "") {
-                                    ?>
-                                
-                                    <div class="alert alert-danger" role="alert">
-                                        <?php echo $errMsg ?>
-                                    </div>
-                                
+                                                        if ($errMsg != "") {
+                                                        ?>
+
+                                        <div class="alert alert-danger" role="alert">
+                                            <?php echo $errMsg ?>
+                                        </div>
+
                                     <?php
-                                }
-                                ?></h5>
+                                                        }
+                                    ?>
+                                </h5>
 
                                 <!-- Vertical Form -->
                                 <form class="row g-3" action="add-staff.php" method="POST">
@@ -176,8 +172,7 @@ if (isset($_POST['emailUser']) && isset($_POST['password']) && isset($_POST['nam
     <!-- ======= Footer ======= -->
     <!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="../views/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
