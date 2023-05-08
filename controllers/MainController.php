@@ -10,7 +10,7 @@ class MainController
         $this->db = new DBController;
         if ($this->db->openConnect()) {
             $email = $user->getUsername();
-            $pass = $user->getPassword();
+            $pass = md5($user->getPassword());
             $type = $user->getUserType();
             $query = "SELECT * FROM user WHERE username='$email' AND password='$pass'";
             $result = $this->db->select($query);
@@ -43,7 +43,7 @@ class MainController
         $this->db = new DBController;
         if ($this->db->openConnect()) {
             $username = $user->getUsername();
-            $password = $user->getPassword();
+            $password = md5($user->getPassword());
             $name = $user->getName();
             $query = "INSERT INTO user VALUES ('','$username','$password','$name',2)";
             $result = $this->db->insert($query);
@@ -66,4 +66,3 @@ class MainController
         }
     }
 }
-?>
