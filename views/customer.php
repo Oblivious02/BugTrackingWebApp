@@ -31,9 +31,7 @@ if (!isset($_SESSION['userType'])) {
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <!-- <link href="../views/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -65,12 +63,10 @@ if (!isset($_SESSION['userType'])) {
     <nav class="navbar bg-body-secondary fixed-top na" data-bs-theme="dark">
         <div class="container">
             <a class="navbar-brand" href="../views/customer.php">BugTracking</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menubar</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -84,8 +80,7 @@ if (!isset($_SESSION['userType'])) {
                             <a class="nav-link" href="chat.php">Message</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile
                             </a>
                             <ul class="dropdown-menu">
@@ -110,12 +105,9 @@ if (!isset($_SESSION['userType'])) {
     <main>
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active main-photo">
@@ -131,13 +123,11 @@ if (!isset($_SESSION['userType'])) {
                     <div class="main-photo__color"></div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -242,8 +232,7 @@ if (!isset($_SESSION['userType'])) {
                                         <h3 class="team-player__name">omar mohamed</h3>
                                         <span class="team-player__line"></span>
                                         <p class="team-player__club">elghaba club</p>
-                                        <a href="haneen.html"><button type="button"
-                                                class="btn btn-outline-primary team-player__button">read
+                                        <a href="haneen.html"><button type="button" class="btn btn-outline-primary team-player__button">read
                                                 more</button></a>
                                     </div>
                                 </div>
@@ -255,8 +244,7 @@ if (!isset($_SESSION['userType'])) {
                                         <h3 class="team-player__name">hana mohamed</h3>
                                         <span class="team-player__line"></span>
                                         <p class="team-player__club">Tagamoa Heights</p>
-                                        <a href="momen.html"><button type="button"
-                                                class="btn btn-outline-primary team-player__button">read
+                                        <a href="momen.html"><button type="button" class="btn btn-outline-primary team-player__button">read
                                                 more</button></a>
                                     </div>
                                 </div>
@@ -268,8 +256,7 @@ if (!isset($_SESSION['userType'])) {
                                         <h3 class="team-player__name">nada gamal</h3>
                                         <span class="team-player__line"></span>
                                         <p class="team-player__club">mokatam club</p>
-                                        <a href="elfeky.html"><button type="button"
-                                                class="btn btn-outline-primary team-player__button">read
+                                        <a href="elfeky.html"><button type="button" class="btn btn-outline-primary team-player__button">read
                                                 more</button></a>
                                     </div>
                                 </div>
@@ -352,18 +339,10 @@ if (!isset($_SESSION['userType'])) {
                     <h2 class="footer-content__header">follow us</h2>
                     <span class="footer-line"></span>
                     <ul class="footer-list footer-follow">
-                        <li class="follow-list"><a href="#" class="follow-list__link"><span
-                                    class="follow-list__circle"><i
-                                        class="fa-brands fa-whatsapp footer-icon"></i></span></a></li>
-                        <li class="follow-list"><a href="#" class="follow-list__link"><span
-                                    class="follow-list__circle"><i
-                                        class="fa-brands fa-facebook-f footer-icon"></i></span></a></li>
-                        <li class="follow-list"><a href="#" class="follow-list__link"><span
-                                    class="follow-list__circle"><i
-                                        class="fa-brands fa-instagram footer-icon"></i></span></a></li>
-                        <li class="follow-list"><a href="#" class="follow-list__link"><span
-                                    class="follow-list__circle"><i
-                                        class="fa-brands fa-facebook-messenger footer-icon"></i></span></a></li>
+                        <li class="follow-list"><a href="#" class="follow-list__link"><span class="follow-list__circle"><i class="fa-brands fa-whatsapp footer-icon"></i></span></a></li>
+                        <li class="follow-list"><a href="#" class="follow-list__link"><span class="follow-list__circle"><i class="fa-brands fa-facebook-f footer-icon"></i></span></a></li>
+                        <li class="follow-list"><a href="#" class="follow-list__link"><span class="follow-list__circle"><i class="fa-brands fa-instagram footer-icon"></i></span></a></li>
+                        <li class="follow-list"><a href="#" class="follow-list__link"><span class="follow-list__circle"><i class="fa-brands fa-facebook-messenger footer-icon"></i></span></a></li>
                     </ul>
                 </div>
             </div>
@@ -387,4 +366,5 @@ if (!isset($_SESSION['userType'])) {
 </body>
 
 </html>
-<?php //include "../views/includes/footer.php"; ?>
+<?php //include "../views/includes/footer.php"; 
+?>
