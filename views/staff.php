@@ -153,7 +153,7 @@ if (!isset($_SESSION['userType'])) {
                                 if (count($staffs) == 0) {
                                     ?>
                                     <div class="alert alert-danger" role="alert">
-                                        There is no any bugs
+                                        There is no any staff
                                     </div>
                                     <?php
                                 } else {
@@ -162,14 +162,13 @@ if (!isset($_SESSION['userType'])) {
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Bug ID</th>
                                                 <th scope="col">My Id</th>
                                                 <th scope="col">Customer Id</th>
                                                 <th scope="col">bugTitle</th>
                                                 <th scope="col">bugDetails</th>
                                                 <th scope="col">Raise To Another</th>
                                                 <th scope="col">Solve the bug</th>
-                                                <th scope="col">Status</th>
+                                                <th scope="col">solved??</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -183,9 +182,6 @@ if (!isset($_SESSION['userType'])) {
                                                     <th scope="row">
                                                         <?php echo $i++; ?>
                                                     </th>
-                                                    <td>
-                                                        <?php echo $staff["bugID"]; ?>
-                                                    </td>
                                                     <td>
                                                         <?php echo $staff["staffAssignedID"] ?>
                                                     </td>
@@ -212,16 +208,16 @@ if (!isset($_SESSION['userType'])) {
                                                             <input type="hidden" name="bugID"
                                                                 value="<?php echo $staff["bugID"] ?>">
                                                             <button class="btn btn-outline-success" name="solved">
-                                                                Solve
+                                                                solve
                                                             </button>
                                                         </form>
                                                     </td>
                                                     <td>
                                                         <?php
-                                                        if ($staff["status"] == 1) {
-                                                            echo "Solved";
+                                                        if ($staff["solved"] == 1) {
+                                                            echo "solved";
                                                         } else {
-                                                            echo "Pending a solution";
+                                                            echo "waiting to solve";
                                                         }
                                                         ?>
                                                     </td>
