@@ -83,7 +83,7 @@ if (isset($_POST['bugTitle']) && isset($_POST['bugDetails'])) {
 <body>
     <nav class="navbar bg-body-secondary sticky-top na" data-bs-theme="dark">
         <div class="container">
-            <a class="navbar-brand" href="#">BugTracking</a>
+            <a class="navbar-brand" href="../views/customer.php">BugTracking</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
