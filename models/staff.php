@@ -64,7 +64,7 @@ class Staff extends User
     {
         $db = new DBController;
         if ($db->openConnect()) {
-            $query = "UPDATE bug SET solved=1 WHERE bugID='$id'";
+            $query = "UPDATE bug SET status=1 WHERE bugID='$id'";
             return $db->update($query);
         } else {
             echo "error database connection";
@@ -72,5 +72,3 @@ class Staff extends User
         }
     }
 }
-
-?>
