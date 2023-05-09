@@ -29,21 +29,6 @@ class Staff extends User
             return false;
         }
     }
-
-    // public function updateOfRaise($staffID, $bugID)
-    // {
-    //     $db = new DBController;
-    //     if ($db->openConnect()) {
-    //         $query = "UPDATE bug SET staffAssignedID='$staffID' WHERE bugID='$bugID'";
-    //         return $db->update($query);
-    //     } else {
-    //         echo "error database connection";
-    //         return false;
-    //     }
-    // }
-
-
-    //SOLVE ME
     public function updateSolve($bug_id, $staffID)
     {
         $db = new DBController;

@@ -1,15 +1,12 @@
 <?php
 
-class User
-{
+class User{
 
     private $userID;
     private $username;
     private $password;
     private $name;
     private $userType;
-
-    // getting & setting function
     public function getUserID()
     {
         return $this->userID;
@@ -51,9 +48,4 @@ class User
     {
         $this->userType = $type;
     }
-
-
-
 }
-
-?>

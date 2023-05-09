@@ -50,16 +50,11 @@ if (!isset($_SESSION['userType'])) {
             <div class="col-lg-12 overflow-hidden">
                 <div class="card chat-app">
                     <div id="plist" class="people-list">
-                        <div class="input-group">
-                            <div class="input-group-prepend btn btn-success">
-                                <span class="input-group-text btn-send"><i class="fa fa-search"></i></span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Search...">
-                        </div>
+
                         <ul class="list-unstyled chat-list mt-2 mb-0">
                             <?php
                             foreach ($staffs as $staff) {
-                                ?>
+                            ?>
                                 <a href="chat.php?buttonPeople=<?php echo $staff["staffID"] ?>">
                                     <div class="<?php $staff['staffID'] ?>">
                                         <li class="clearfix" name="ahmed" id="s<?php echo $staff["staffID"] ?>">
@@ -77,14 +72,14 @@ if (!isset($_SESSION['userType'])) {
                                         </li>
                                     </div>
                                 </a>
-                                <?php
+                            <?php
                             }
                             ?>
                         </ul>
                     </div>
                     <?php
                     if (!empty($_GET['buttonPeople'])) {
-                        ?>
+                    ?>
                         <div>
                             <div class="chat" id="chat">
                                 <div class="chat-header clearfix">
@@ -101,19 +96,10 @@ if (!isset($_SESSION['userType'])) {
                                                     echo $name[0]['name'];
                                                     ?>
                                                 </h6>
-                                                <small>Last seen: 2 hours ago</small>
+
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 hidden-sm text-right">
-                                            <a href="javascript:void(0);" class="btn btn-outline-secondary"><i
-                                                    class="fa fa-camera"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-outline-primary"><i
-                                                    class="fa fa-image"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-outline-info"><i
-                                                    class="fa fa-cogs"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-outline-warning"><i
-                                                    class="fa fa-question"></i></a>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="chat-history">
@@ -132,7 +118,7 @@ if (!isset($_SESSION['userType'])) {
                                         ?>
                                         <li class="clearfix">
                                             <div class="message-data">
-                                                <span class="message-data-time">Start Boot</span>
+
                                             </div>
                                             <div class="message my-message w-100">
                                                 <?php
@@ -156,22 +142,22 @@ if (!isset($_SESSION['userType'])) {
                             </div>
                             <?php
                             if (!empty($_GET['buttonPeople'])) {
-                                ?>
+                            ?>
                                 <div class="chat-message clearfix">
                                     <!-- <form class="input-group mb-0"
-                                    action="chat.php?buttonPeople=<?php //echo $_GET['buttonPeople'] ?>" method="POST"> -->
+                                    action="chat.php?buttonPeople=<?php //echo $_GET['buttonPeople'] 
+                                                                    ?>" method="POST"> -->
                                     <button type="submit" class="input-group-prepend btn btn-success" onclick="sendMsg()">
                                         <span class="input-group-text btn-send"><i class="fa fa-send"></i></span>
                                     </button>
-                                    <input type="text" class="form-control" placeholder="Enter text here..." name="msgContent"
-                                        autocomplete="off" id="myMsg" style="width: 88%; display: inline-block;">
+                                    <input type="text" class="form-control" placeholder="Enter text here..." name="msgContent" autocomplete="off" id="myMsg" style="width: 88%; display: inline-block;">
                                     <!-- </form> -->
                                 </div>
-                            </div>
-                            <?php
+                        </div>
+                <?php
                             }
-                    }
-                    ?>
+                        }
+                ?>
                 </div>
             </div>
         </div>
@@ -186,7 +172,7 @@ if (!isset($_SESSION['userType'])) {
             var msg = document.getElementById("myMsg").value;
             // var msg = document.getElementById("myMsg").value;
             // var msg = document.getElementById("myMsg").value;
-            xhr.onreadystatechange = function () {
+            xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     document.getElementById("txt").innerHTML = xhr.responseText;
                 }
@@ -195,8 +181,8 @@ if (!isset($_SESSION['userType'])) {
             xhr.send();
         }
 
-    // Reload the content every 5 seconds
-    // setInterval(reloadContent, 5000);
+        // Reload the content every 5 seconds
+        // setInterval(reloadContent, 5000);
     </script>
 </body>
 

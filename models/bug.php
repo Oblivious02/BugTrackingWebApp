@@ -1,7 +1,7 @@
 <?php
 require_once '../controllers/MainController.php';
 require_once '../models/customer.php';
-class Bug extends Customer
+class Bug
 {
     private $bugID;
     private $bugTitle;
