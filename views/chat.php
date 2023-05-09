@@ -54,7 +54,7 @@ if (!isset($_SESSION['userType'])) {
                         <ul class="list-unstyled chat-list mt-2 mb-0">
                             <?php
                             foreach ($staffs as $staff) {
-                            ?>
+                                ?>
                                 <a href="chat.php?buttonPeople=<?php echo $staff["staffID"] ?>">
                                     <div class="<?php $staff['staffID'] ?>">
                                         <li class="clearfix" name="ahmed" id="s<?php echo $staff["staffID"] ?>">
@@ -72,19 +72,19 @@ if (!isset($_SESSION['userType'])) {
                                         </li>
                                     </div>
                                 </a>
-                            <?php
+                                <?php
                             }
                             ?>
                         </ul>
                     </div>
                     <?php
                     if (!empty($_GET['buttonPeople'])) {
-                    ?>
+                        ?>
                         <div>
                             <div class="chat" id="chat">
                                 <div class="chat-header clearfix">
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6 d-flex align-items-center">
                                             <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
                                                 <!-- ----------- https://bootdey.com/img/Content/avatar/avatar2.png ----------- -->
                                                 <img src="images/avatar2.png" alt="avatar">
@@ -142,22 +142,23 @@ if (!isset($_SESSION['userType'])) {
                             </div>
                             <?php
                             if (!empty($_GET['buttonPeople'])) {
-                            ?>
+                                ?>
                                 <div class="chat-message clearfix">
                                     <!-- <form class="input-group mb-0"
                                     action="chat.php?buttonPeople=<?php //echo $_GET['buttonPeople'] 
-                                                                    ?>" method="POST"> -->
+                                            ?>" method="POST"> -->
                                     <button type="submit" class="input-group-prepend btn btn-success" onclick="sendMsg()">
                                         <span class="input-group-text btn-send"><i class="fa fa-send"></i></span>
                                     </button>
-                                    <input type="text" class="form-control" placeholder="Enter text here..." name="msgContent" autocomplete="off" id="myMsg" style="width: 88%; display: inline-block;">
+                                    <input type="text" class="form-control" placeholder="Enter text here..." name="msgContent"
+                                        autocomplete="off" id="myMsg" style="width: 88%; display: inline-block;">
                                     <!-- </form> -->
                                 </div>
-                        </div>
-                <?php
+                            </div>
+                            <?php
                             }
-                        }
-                ?>
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -172,7 +173,7 @@ if (!isset($_SESSION['userType'])) {
             var msg = document.getElementById("myMsg").value;
             // var msg = document.getElementById("myMsg").value;
             // var msg = document.getElementById("myMsg").value;
-            xhr.onreadystatechange = function() {
+            xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     document.getElementById("txt").innerHTML = xhr.responseText;
                 }
