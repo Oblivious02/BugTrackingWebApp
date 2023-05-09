@@ -126,7 +126,7 @@ if (!isset($_SESSION['userType'])) {
         <main id="main" class="main show-admin">
 
             <div class="pagetitle">
-                <h1>Staff Tables</h1>
+                <h1>Staff Table</h1>
             </div><!-- End Page Title -->
 
             <section class="section">

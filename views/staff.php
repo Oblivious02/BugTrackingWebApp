@@ -27,7 +27,9 @@ if (!isset($_SESSION['userType'])) {
     if (isset($_POST['solved'])) {
         if (!empty($_POST['bugID'])) {
             $staff->updateSolve($_POST['bugID'], $_SESSION['userID']);
+
             $solvedSuccess = 1;
+            header('refresh: 1');
         }
     }
 }

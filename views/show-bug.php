@@ -61,11 +61,11 @@ if (isset($_POST['raise'])) {
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">StaffID</th>
-                                            <th scope="col">CustomerID</th>
+                                            <th scope="col">Staff Assigned ID</th>
+                                            <th scope="col">Customer Reported ID</th>
                                             <th scope="col">Bug Title</th>
                                             <th scope="col">Bug details</th>
-                                            <th scope="col">Assign Bug</th>
+                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -95,7 +95,7 @@ if (isset($_POST['raise'])) {
                                                     <form action="show-bug.php" method="POST">
                                                         <input type="hidden" name="bugID" value="<?php echo $bug["bugID"] ?>">
                                                         <button class="btn btn-outline-primary" name="raise">
-                                                            Raise Bug
+                                                            Assign Bug
                                                         </button>
                                                     </form>
                                                 </td>
