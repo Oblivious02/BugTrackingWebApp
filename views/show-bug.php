@@ -52,7 +52,7 @@ if (isset($_POST['raise'])) {
                             if (count($bugs) == 0) {
                             ?>
                                 <div class="alert alert-danger" role="alert">
-                                    There is no any bug
+                                    There are no bugs
                                 </div>
                             <?php
                             } else {
@@ -65,7 +65,7 @@ if (isset($_POST['raise'])) {
                                             <th scope="col">CustomerID</th>
                                             <th scope="col">Bug Title</th>
                                             <th scope="col">Bug details</th>
-                                            <th scope="col">Raise Bug</th>
+                                            <th scope="col">Assign Bug</th>
                                         </tr>
                                     </thead>
                                     <tbody>

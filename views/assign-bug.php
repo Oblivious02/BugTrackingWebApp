@@ -177,7 +177,6 @@ if (!isset($_SESSION['userType'])) {
                                             <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">Username</th>
-                                                <th scope="col">Password</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Delete</th>
                                             </tr>
@@ -195,9 +194,6 @@ if (!isset($_SESSION['userType'])) {
                                                     </th>
                                                     <td>
                                                         <?php echo $staff["username"] ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $staff["password"] ?>
                                                     </td>
                                                     <td>
                                                         <?php echo $staff["name"] ?>

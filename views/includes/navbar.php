@@ -2,12 +2,11 @@
 
 <nav class="navbar bg-body-tertiary sticky-top" data-bs-theme="dark">
     <div class="container">
-        <a class="navbar-brand" href="#">BugTracking</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <a class="navbar-brand" href="../views/admin.php">BugTracking</a>
+        <a href="../views/admin.php"><button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                Home
+            </button></a>
+        <!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menubar</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -34,11 +33,11 @@
                         </ul>
                     </li>
                 </ul>
-                <!-- <form class="d-flex mt-3" role="search">
+                 <form class="d-flex mt-3" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form> -->
-            </div>
-        </div>
+        <!-- </div> -->
+        <!-- </div>  -->
     </div>
 </nav>

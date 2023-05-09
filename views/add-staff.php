@@ -117,7 +117,7 @@ if (isset($_POST['emailUser']) && isset($_POST['password']) && isset($_POST['nam
     <div class="container">
         <main id="main" class="main show-admin">
             <div class="pagetitle title-up">
-                <h1>Enter the data about staff</h1>
+                <h1>Enter staff data</h1>
             </div><!-- End Page Title -->
             <section class="section">
                 <div class="row">
