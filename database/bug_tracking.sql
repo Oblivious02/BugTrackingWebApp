@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2023 at 08:42 PM
+-- Generation Time: May 09, 2023 at 10:24 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,12 +41,7 @@ CREATE TABLE `bug` (
 --
 
 INSERT INTO `bug` (`bugID`, `staffAssignedID`, `customerReportedID`, `bug title`, `bug details`, `solved`) VALUES
-(3, 17, 3, 'SignIn', 'solveIt', 0),
-(4, 12, 3, 'SignOut', 'solve', 1),
-(6, 13, 3, 'solve it', 'please', 0),
-(7, 13, 3, 'hello', 'hello hello', 0),
-(8, NULL, 3, 'bye', 'bye bye', 0),
-(9, NULL, 3, 'Bug Facebook', 'cant login', 0);
+(1, 4, 2, 'Send button issue', 'Clicking on the button does nothing', 1);
 
 -- --------------------------------------------------------
 
@@ -66,11 +61,19 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`messageID`, `senderID`, `recipientID`, `message`) VALUES
-(23, 1, 13, 'hello abdallah'),
-(24, 12, 1, 'hello admin'),
-(26, 12, 3, 'Solved bug'),
-(27, 12, 3, 'Solved bug (SignOut)'),
-(28, 12, 3, 'Solved bug name: (SignOut)');
+(1, 4, 2, 'Solved bug name: (Send button issue)'),
+(2, 4, 2, 'Solved bug name: (Send button issue)'),
+(3, 4, 2, 'Solved bug name: (Send button issue)'),
+(4, 4, 2, 'Solved bug name: (Send button issue)'),
+(5, 4, 2, 'Solved bug name: (Send button issue)'),
+(6, 4, 2, 'Solved bug name: (Send button issue)'),
+(7, 4, 2, 'Solved bug name: (Send button issue)'),
+(8, 4, 2, 'Solved bug name: (Send button issue)'),
+(9, 4, 2, 'Solved bug name: (Send button issue)'),
+(10, 4, 2, 'Solved bug name: (Send button issue)'),
+(11, 4, 2, 'Solved bug name: (Send button issue)'),
+(12, 4, 2, 'Solved bug name: (Send button issue)'),
+(13, 4, 2, 'Solved bug name: (Send button issue)');
 
 -- --------------------------------------------------------
 
@@ -91,12 +94,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`staffID`, `username`, `password`, `name`, `typeID`) VALUES
-(1, 'admin@gmail.com', '202cb962ac59075b964b07152d234b70', 'admin', 1),
-(3, 'customer@gmail.com', '202cb962ac59075b964b07152d234b70', 'customer', 2),
-(12, 'staff@gmail.com', '202cb962ac59075b964b07152d234b70', 'staff', 0),
-(13, 'abdallah@gmail.com', '202cb962ac59075b964b07152d234b70', 'abdallah', 0),
-(15, 'cus2@gmail.com', '698d51a19d8a121ce581499d7b701668', 'Kandeel', 2),
-(17, 'ayman@gmail.com', '202cb962ac59075b964b07152d234b70', 'Ayman', 0);
+(1, 'admin@gmail.com', '202cb962ac59075b964b07152d234b70', 'Admin', 1),
+(2, 'mged@gmail.com', '698d51a19d8a121ce581499d7b701668', 'mged', 2),
+(3, 'Abdallah@gmail.com', '15de21c670ae7c3f6f3f1f37029303c9', 'Abdallah', 0),
+(4, 'Kandeel@gmail.com', '202cb962ac59075b964b07152d234b70', 'Kandeel', 0);
 
 --
 -- Indexes for dumped tables
@@ -132,19 +133,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bug`
 --
 ALTER TABLE `bug`
-  MODIFY `bugID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `bugID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `messageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `messageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `staffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `staffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -154,7 +155,7 @@ ALTER TABLE `user`
 -- Constraints for table `bug`
 --
 ALTER TABLE `bug`
-  ADD CONSTRAINT `bug_ibfk_1` FOREIGN KEY (`customerReportedID`) REFERENCES `user` (`staffID`),
+  ADD CONSTRAINT `bug_ibfk_1` FOREIGN KEY (`customerReportedID`) REFERENCES `user` (`staffID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `bug_ibfk_2` FOREIGN KEY (`staffAssignedID`) REFERENCES `user` (`staffID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
