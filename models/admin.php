@@ -77,19 +77,11 @@ class Admin extends User
     {
         // session_start();
         $db = new DBController;
-        $username = $user->getUsername();
         $id = $user->getUserID();
-        $pass = $user->getPassword();
-        $name = $user->getName();
         $bug_id = $_SESSION['idOfBug'];
         if ($db->openConnect()) {
-            $query = "INSERT INTO staff VALUES ('','$username','$pass','$name','$bug_id','$id')";
-            if ($this->updateOfRaise($id, $bug_id)) {
-                return $db->insert($query);
-            } else {
-                echo "updateOfRaise error";
-            }
-
+            $query = "UPDATE bug SET staffAssignedID='$id' WHERE bugID='$bug_id'";
+            return $db->update($query);
         } else {
             echo "error database connection";
             return false;
@@ -107,5 +99,3 @@ class Admin extends User
         }
     }
 }
-
-?>

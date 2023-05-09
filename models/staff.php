@@ -1,5 +1,6 @@
 <?php
 require_once '../controllers/MainController.php';
+require_once '../models/bug.php';
 class Staff extends User
 {
 
@@ -18,59 +19,50 @@ class Staff extends User
     public function raiseToAnotherStaff(User $user)
     {
         $db = new DBController;
-        $username = $user->getUsername();
         $id = $user->getUserID();
-        $pass = $user->getPassword();
-        $name = $user->getName();
         $bug_id = $_SESSION['idOfBug'];
         if ($db->openConnect()) {
-            $query = "INSERT INTO staff VALUES ('','$username','$pass','$name','$bug_id','$id')";
-            if ($this->updateOfRaise($id, $bug_id) && $this->updateOfRaiseStaff($id, $bug_id)) {
-                return $db->insert($query);
-            } else {
-                echo "updateOfRaise error";
+            $query = "UPDATE bug SET staffAssignedID='$id' WHERE bugID='$bug_id'";
+            return $db->update($query);
+        } else {
+            echo "error database connection";
+            return false;
+        }
+    }
+
+    // public function updateOfRaise($staffID, $bugID)
+    // {
+    //     $db = new DBController;
+    //     if ($db->openConnect()) {
+    //         $query = "UPDATE bug SET staffAssignedID='$staffID' WHERE bugID='$bugID'";
+    //         return $db->update($query);
+    //     } else {
+    //         echo "error database connection";
+    //         return false;
+    //     }
+    // }
+
+
+    //SOLVE ME
+    public function updateSolve($bug_id, $staffID)
+    {
+        $db = new DBController;
+        if ($db->openConnect()) {
+            $query = "UPDATE bug SET solved=1 WHERE bugID='$bug_id'";
+            if ($db->update($query)) {
+                $staffID = $_SESSION["userID"];
+                $staffName = $_SESSION["userID"];
+                $bugObject = new Bug;
+                $result = $bugObject->getBug($bug_id);
+                $customerID = $result[0]["customerReportedID"];
+                $bugName = $result[0]["bug title"];
+
+                $qry = "INSERT into messages values ('', '$staffID', '$customerID', 'Solved bug name: ($bugName)')";
+                $db->insert($qry);
             }
         } else {
             echo "error database connection";
             return false;
         }
     }
-
-    public function updateOfRaise($staffID, $bugID)
-    {
-        $db = new DBController;
-        if ($db->openConnect()) {
-            $query = "UPDATE bug SET staffAssignedID='$staffID' WHERE bugID='$bugID'";
-            return $db->update($query);
-        } else {
-            echo "error database connection";
-            return false;
-        }
-    }
-
-    public function updateOfRaiseStaff($staffID, $bugID)
-    {
-        $db = new DBController;
-        if ($db->openConnect()) {
-            $query = "UPDATE staff SET bug_id=NULL WHERE id='$staffID'";
-            return $db->update($query);
-        } else {
-            echo "error database connection";
-            return false;
-        }
-    }
-
-    public function updateSolve($id)
-    {
-        $db = new DBController;
-        if ($db->openConnect()) {
-            $query = "UPDATE bug SET solved=1 WHERE bugID='$id'";
-            return $db->update($query);
-        } else {
-            echo "error database connection";
-            return false;
-        }
-    }
 }
-
-?>

@@ -38,7 +38,6 @@ if (isset($_POST['raise'])) {
                     <div class="card bug-body">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="card-title">All Bugs is here</h5>
                                 <div class="stuff-operator">
                                     <!-- <a href="assign-bug.php">
                                         <button type="button" class="btn btn-primary add-button">Add new
@@ -51,13 +50,13 @@ if (isset($_POST['raise'])) {
                             <?php
 
                             if (count($bugs) == 0) {
-                                ?>
+                            ?>
                                 <div class="alert alert-danger" role="alert">
                                     There is no any bug
                                 </div>
-                                <?php
+                            <?php
                             } else {
-                                ?>
+                            ?>
                                 <table class="table datatable">
                                     <thead>
                                         <tr>
@@ -75,7 +74,7 @@ if (isset($_POST['raise'])) {
                                         <!-- End Table with stripped rows -->
                                         <?php
                                         foreach ($bugs as $bug) {
-                                            ?>
+                                        ?>
                                             <tr>
                                                 <th scope="row">
                                                     <?php echo $bug["bugID"] ?>
@@ -101,22 +100,22 @@ if (isset($_POST['raise'])) {
                                                     </form>
                                                 </td>
                                             </tr>
-                                            <?php
+                                        <?php
                                         }
                                         ?>
                                     </tbody>
                                 </table>
-                                <?php
+                            <?php
                             }
 
                             ?>
                             <?php
                             if ($deleted == true) {
-                                ?>
+                            ?>
                                 <div class="alert alert-success" role="alert">
                                     the staff has been deleted
                                 </div>
-                                <?php
+                            <?php
                             }
                             ?>
 
@@ -133,8 +132,7 @@ if (isset($_POST['raise'])) {
 <!-- ======= Footer ======= -->
 <!-- End Footer -->
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-        class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
 <script src="../views/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>

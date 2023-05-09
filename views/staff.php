@@ -14,6 +14,7 @@ if (!isset($_SESSION['userType'])) {
     require_once '../controllers/MainController.php';
     require_once '../models/staff.php';
     $i = 1;
+    $solvedSuccess = 0;
     $staff = new Staff;
     $pageTitle = 'Staff';
     $bugs = $staff->getMyBugs($_SESSION['userID']);
@@ -25,9 +26,8 @@ if (!isset($_SESSION['userType'])) {
     }
     if (isset($_POST['solved'])) {
         if (!empty($_POST['bugID'])) {
-            // $_SESSION['idOfBug'] = $_POST['bugID'];
-            $staff->updateSolve($_POST['bugID']);
-            // header('location: assignBugAnotherStaff.php');
+            $staff->updateSolve($_POST['bugID'], $_SESSION['userID']);
+            $solvedSuccess = 1;
         }
     }
 }
@@ -153,6 +153,15 @@ if (!isset($_SESSION['userType'])) {
                                 <?php
                                 } else {
                                 ?>
+                                    <?php
+                                    if ($solvedSuccess == 1) {
+                                    ?>
+                                        <div class="alert alert-success" role="alert">
+                                            Solved Successfully
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
                                     <table class="table datatable">
                                         <thead>
                                             <tr>

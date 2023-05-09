@@ -17,7 +17,8 @@ if (!isset($_SESSION['userType'])) {
     $user = new User;
     $pageTitle = 'RaiseBug';
     $staffs = $admin->getAllStaff();
-    $deleted = false;
+    // $deleted = false;
+    $assignSuccess = 0;
     if (isset($_POST['raiseTheBug'])) {
         if (!empty($_POST['staffID']) && !empty($_POST['staffUsername']) && !empty($_POST['staffPassword']) && !empty($_POST['staffName'])) {
             $user->setUserID($_POST['staffID']);
@@ -26,6 +27,7 @@ if (!isset($_SESSION['userType'])) {
             $user->setName($_POST['staffName']);
             if ($admin->raiseBug($user)) {
                 $staffs = $admin->getAllStaff();
+                $assignSuccess = 1;
             } else {
                 echo "error";
             }
@@ -53,9 +55,7 @@ if (!isset($_SESSION['userType'])) {
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <!-- <link href="../views/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -93,12 +93,10 @@ if (!isset($_SESSION['userType'])) {
     <nav class="navbar bg-body-secondary sticky-top na" data-bs-theme="dark">
         <div class="container">
             <a class="navbar-brand" href="#">BugTracking</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menubar</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -112,8 +110,7 @@ if (!isset($_SESSION['userType'])) {
                             <a class="nav-link" href="chat.php">Messages</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile
                             </a>
                             <ul class="dropdown-menu">
@@ -159,12 +156,21 @@ if (!isset($_SESSION['userType'])) {
                                 <?php
 
                                 if (count($staffs) == 0) {
-                                    ?>
+                                ?>
                                     <div class="alert alert-danger" role="alert">
                                         There is no any staff
                                     </div>
-                                    <?php
+                                <?php
                                 } else {
+                                ?>
+                                    <?php
+                                    if ($assignSuccess == 1) {
+                                    ?>
+                                        <div class="alert alert-success" role="alert">
+                                            Raised Successfully
+                                        </div>
+                                    <?php
+                                    }
                                     ?>
                                     <table class="table datatable">
                                         <thead>
@@ -182,7 +188,7 @@ if (!isset($_SESSION['userType'])) {
                                             <!-- End Table with stripped rows -->
                                             <?php
                                             foreach ($staffs as $staff) {
-                                                ?>
+                                            ?>
                                                 <tr>
                                                     <th scope="row">
                                                         <?php echo $i++; ?>
@@ -198,38 +204,26 @@ if (!isset($_SESSION['userType'])) {
                                                     </td>
                                                     <td>
                                                         <form action="assign-bug.php" method="POST">
-                                                            <input type="hidden" name="staffID"
-                                                                value="<?php echo $staff["staffID"] ?>">
-                                                            <input type="hidden" name="staffUsername"
-                                                                value="<?php echo $staff["username"] ?>">
-                                                            <input type="hidden" name="staffPassword"
-                                                                value="<?php echo $staff["password"] ?>">
-                                                            <input type="hidden" name="staffName"
-                                                                value="<?php echo $staff["name"] ?>">
+                                                            <input type="hidden" name="staffID" value="<?php echo $staff["staffID"] ?>">
+                                                            <input type="hidden" name="staffUsername" value="<?php echo $staff["username"] ?>">
+                                                            <input type="hidden" name="staffPassword" value="<?php echo $staff["password"] ?>">
+                                                            <input type="hidden" name="staffName" value="<?php echo $staff["name"] ?>">
                                                             <button class="btn btn-outline-success" name="raiseTheBug">
                                                                 <i class="fa-solid fa-check"></i> Raise
                                                             </button>
                                                         </form>
                                                     </td>
                                                 </tr>
-                                                <?php
+                                            <?php
                                             }
                                             ?>
                                         </tbody>
                                     </table>
-                                    <?php
+                                <?php
                                 }
 
                                 ?>
-                                <?php
-                                if ($deleted == true) {
-                                    ?>
-                                    <div class="alert alert-success" role="alert">
-                                        the staff has been deleted
-                                    </div>
-                                    <?php
-                                }
-                                ?>
+
 
                             </div>
                         </div>
@@ -244,8 +238,7 @@ if (!isset($_SESSION['userType'])) {
     <!-- ======= Footer ======= -->
     <!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="../views/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>

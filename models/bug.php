@@ -19,6 +19,15 @@ class Bug extends Customer
             return false;
         }
     }
+    public function getBug($bugID)
+    {
+        $db = new DBController;
+        if ($db->openConnect()) {
+            $query = "SELECT * FROM bug WHERE bugID = $bugID";
+            return $db->select($query);
+        } else {
+            echo "error database connection";
+            return false;
+        }
+    }
 }
-
-?>

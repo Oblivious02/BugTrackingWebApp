@@ -50,4 +50,3 @@ class Customer extends User
         }
     }
 }
-?>
