@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2023 at 07:50 PM
+-- Generation Time: May 09, 2023 at 08:42 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,26 +41,12 @@ CREATE TABLE `bug` (
 --
 
 INSERT INTO `bug` (`bugID`, `staffAssignedID`, `customerReportedID`, `bug title`, `bug details`, `solved`) VALUES
-(3, NULL, 3, 'SignIn', 'solveIt', 0),
-(4, 13, 3, 'SignOut', 'solve', 0),
-(6, 13, 3, 'solve it', 'please', 1),
-(7, NULL, 3, 'hello', 'hello hello', 0),
-(8, NULL, 3, 'bye', 'bye bye', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer`
---
-
-CREATE TABLE `customer` (
-  `customerID` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `user_ID` int(11) NOT NULL,
-  `bug_ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(3, 17, 3, 'SignIn', 'solveIt', 0),
+(4, 12, 3, 'SignOut', 'solve', 1),
+(6, 13, 3, 'solve it', 'please', 0),
+(7, 13, 3, 'hello', 'hello hello', 0),
+(8, NULL, 3, 'bye', 'bye bye', 0),
+(9, NULL, 3, 'Bug Facebook', 'cant login', 0);
 
 -- --------------------------------------------------------
 
@@ -81,33 +67,10 @@ CREATE TABLE `messages` (
 
 INSERT INTO `messages` (`messageID`, `senderID`, `recipientID`, `message`) VALUES
 (23, 1, 13, 'hello abdallah'),
-(24, 12, 1, 'hello admin');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `staff`
---
-
-CREATE TABLE `staff` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `bug_id` int(11) DEFAULT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `staff`
---
-
-INSERT INTO `staff` (`id`, `username`, `password`, `name`, `bug_id`, `user_id`) VALUES
-(2, 'abdallah@gmail.com', '202cb962ac59075b964b07152d234b70', 'abdallah', 6, 13),
-(5, 'staff@gmail.com', '202cb962ac59075b964b07152d234b70', 'staff', 6, 12),
-(6, 'abdallah@gmail.com', '202cb962ac59075b964b07152d234b70', 'abdallah', 6, 13),
-(7, 'staff@gmail.com', '202cb962ac59075b964b07152d234b70', 'staff', 4, 12),
-(8, 'abdallah@gmail.com', '202cb962ac59075b964b07152d234b70', 'abdallah', 4, 13);
+(24, 12, 1, 'hello admin'),
+(26, 12, 3, 'Solved bug'),
+(27, 12, 3, 'Solved bug (SignOut)'),
+(28, 12, 3, 'Solved bug name: (SignOut)');
 
 -- --------------------------------------------------------
 
@@ -132,7 +95,8 @@ INSERT INTO `user` (`staffID`, `username`, `password`, `name`, `typeID`) VALUES
 (3, 'customer@gmail.com', '202cb962ac59075b964b07152d234b70', 'customer', 2),
 (12, 'staff@gmail.com', '202cb962ac59075b964b07152d234b70', 'staff', 0),
 (13, 'abdallah@gmail.com', '202cb962ac59075b964b07152d234b70', 'abdallah', 0),
-(15, 'cus2@gmail.com', '698d51a19d8a121ce581499d7b701668', 'Kandeel', 2);
+(15, 'cus2@gmail.com', '698d51a19d8a121ce581499d7b701668', 'Kandeel', 2),
+(17, 'ayman@gmail.com', '202cb962ac59075b964b07152d234b70', 'Ayman', 0);
 
 --
 -- Indexes for dumped tables
@@ -147,28 +111,12 @@ ALTER TABLE `bug`
   ADD KEY `bug_ibfk_2` (`staffAssignedID`);
 
 --
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`customerID`),
-  ADD KEY `user_ID` (`user_ID`),
-  ADD KEY `bug_ID` (`bug_ID`);
-
---
 -- Indexes for table `messages`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`messageID`),
   ADD KEY `senderID` (`senderID`),
   ADD KEY `recipientID` (`recipientID`);
-
---
--- Indexes for table `staff`
---
-ALTER TABLE `staff`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `bug_id` (`bug_id`) USING BTREE,
-  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `user`
@@ -184,31 +132,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bug`
 --
 ALTER TABLE `bug`
-  MODIFY `bugID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `customer`
---
-ALTER TABLE `customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `bugID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `messageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
---
--- AUTO_INCREMENT for table `staff`
---
-ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `messageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `staffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `staffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
@@ -222,25 +158,11 @@ ALTER TABLE `bug`
   ADD CONSTRAINT `bug_ibfk_2` FOREIGN KEY (`staffAssignedID`) REFERENCES `user` (`staffID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer`
---
-ALTER TABLE `customer`
-  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `user` (`staffID`),
-  ADD CONSTRAINT `customer_ibfk_2` FOREIGN KEY (`bug_ID`) REFERENCES `bug` (`bugID`);
-
---
 -- Constraints for table `messages`
 --
 ALTER TABLE `messages`
   ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`senderID`) REFERENCES `user` (`staffID`) ON DELETE CASCADE,
   ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`recipientID`) REFERENCES `user` (`staffID`) ON DELETE CASCADE;
-
---
--- Constraints for table `staff`
---
-ALTER TABLE `staff`
-  ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bug` (`bugID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `staff_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`staffID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
