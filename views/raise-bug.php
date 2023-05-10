@@ -44,17 +44,17 @@ if (isset($_POST['bugTitle']) && isset($_POST['bugDetails'])) {
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-    <!-- Favicons -->
+
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
+
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <!-- <link href="../views/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- <link href="../views/admin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"> -->
+
+
+
     <link href="../views/admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="../views/admin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
     <link href="../views/admin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
@@ -66,16 +66,8 @@ if (isset($_POST['bugTitle']) && isset($_POST['bugDetails'])) {
     <link rel="stylesheet" href="../views/css/style.css">
     <link rel="stylesheet" href="../views/css/bootstrap.min.css">
 
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Mar 09 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -111,21 +103,17 @@ if (isset($_POST['bugTitle']) && isset($_POST['bugDetails'])) {
                             </ul>
                         </li>
                     </ul>
-                    <!-- <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form> -->
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- ------------------------------- start form ------------------------------- -->
+
     <div class="container">
         <main id="main" class="main show-admin">
             <div class="pagetitle title-up">
                 <h1>Enter bug info</h1>
-            </div><!-- End Page Title -->
+            </div>
             <section class="section">
                 <div class="row">
                     <div class="col-lg-12">
@@ -146,7 +134,7 @@ if (isset($_POST['bugTitle']) && isset($_POST['bugDetails'])) {
                                     ?>
                                 </h5>
 
-                                <!-- Vertical Form -->
+
                                 <form class="row g-3" action="raise-bug.php" method="POST">
                                     <div class="col-12">
                                         <label for="inputNanme4" class="form-label">Title</label>
@@ -160,7 +148,7 @@ if (isset($_POST['bugTitle']) && isset($_POST['bugDetails'])) {
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                         <button type="reset" class="btn btn-secondary">Reset</button>
                                     </div>
-                                </form><!-- Vertical Form -->
+                                </form>
 
                             </div>
                         </div>
@@ -170,9 +158,9 @@ if (isset($_POST['bugTitle']) && isset($_POST['bugDetails'])) {
                 </div>
             </section>
 
-        </main><!-- End #main -->
+        </main>
     </div>
-    <!-- ------------------------------- end form ------------------------------- -->
+
 
     <script src="../views/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="../views/admin/assets/vendor/chart.js/chart.umd.js"></script>
@@ -184,11 +172,9 @@ if (isset($_POST['bugTitle']) && isset($_POST['bugDetails'])) {
     <script src="../views/js/bootstrap.bundle.min.js"></script>
     <script src="../views/js/main.js"></script>
 
-    <!-- Template Main JS File -->
+
     <script src="../views/admin/assets/js/main.js"></script>
 
 </body>
 
 </html>
-<?php //include "../views/includes/footer.php"; 
-?>

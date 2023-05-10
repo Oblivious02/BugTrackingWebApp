@@ -9,7 +9,6 @@ if (!isset($_SESSION['userType'])) {
     if ($_SESSION['userType'] != 2) {
         header("location: login.php");
     }
-    // include "../views/includes/navbar.php";
 }
 ?>
 <!DOCTYPE html>
@@ -24,18 +23,16 @@ if (!isset($_SESSION['userType'])) {
 
     <meta content="" name="description">
     <meta content="" name="keywords">
-
-    <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
+
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <!-- <link href="../views/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- <link href="../views/admin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"> -->
+
+
+
     <link href="../views/admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="../views/admin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
     <link href="../views/admin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
@@ -47,16 +44,8 @@ if (!isset($_SESSION['userType'])) {
     <link rel="stylesheet" href="../views/css/bootstrap.min.css">
     <link rel="stylesheet" href="../views/css/style.css">
 
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Mar 09 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -92,15 +81,11 @@ if (!isset($_SESSION['userType'])) {
                             </ul>
                         </li>
                     </ul>
-                    <!-- <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form> -->
                 </div>
             </div>
         </div>
     </nav>
-    <!-- ------------------------------- start html ------------------------------- -->
+
 
     <main>
         <div id="carouselExampleIndicators" class="carousel slide">
@@ -286,14 +271,9 @@ if (!isset($_SESSION['userType'])) {
                                     <span class="about-title__line"></span>
                                     <span class="about-title__line"></span>
                                 </div>
-                                <p class="about-title__text">Lorem ipsum dolor, sit amet consectetur adipisicing
-                                    elit. Corrupti earum architecto sequi quae tempore sunt pariatur recusandae est
-                                    repellat omnis molestias cumque iste molestiae nobis quo nam, harum quas
-                                    blanditiis?</p>
+                                <p class="about-title__text">A hard working team</p>
                             </div>
                             <div class="about-img">
-                                <!-- <img src="../views/images/background.jpg" alt="all players photo"
-                                    class="about-img__photo"> -->
                             </div>
                         </div>
                     </div>
@@ -349,7 +329,7 @@ if (!isset($_SESSION['userType'])) {
         </div>
     </footer>
 
-    <!-- ------------------------------- end html ------------------------------- -->
+
     <script src="../views/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="../views/admin/assets/vendor/chart.js/chart.umd.js"></script>
     <script src="../views/admin/assets/vendor/echarts/echarts.min.js"></script>
@@ -360,11 +340,9 @@ if (!isset($_SESSION['userType'])) {
     <script src="../views/js/bootstrap.bundle.min.js"></script>
     <script src="../views/js/main.js"></script>
 
-    <!-- Template Main JS File -->
+
     <script src="../views/admin/assets/js/main.js"></script>
 
 </body>
 
 </html>
-<?php //include "../views/includes/footer.php"; 
-?>

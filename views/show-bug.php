@@ -11,7 +11,6 @@ if (!isset($_SESSION['userType'])) {
 $pageTitle = 'Bugs';
 require_once "../views/includes/navbar.php";
 require_once '../models/user.php';
-// require_once '../models/chat.php';
 require_once '../controllers/MainController.php';
 require_once '../models/bug.php';
 $bug = new Bug;
@@ -29,7 +28,7 @@ if (isset($_POST['raise'])) {
 
         <div class="pagetitle">
             <h1>Bugs Tables</h1>
-        </div><!-- End Page Title -->
+        </div>
 
         <section class="section">
             <div class="row">
@@ -39,14 +38,8 @@ if (isset($_POST['raise'])) {
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="stuff-operator">
-                                    <!-- <a href="assign-bug.php">
-                                        <button type="button" class="btn btn-primary add-button">Add new
-                                            staff</button>
-                                    </a> -->
                                 </div>
                             </div>
-
-                            <!-- Table with stripped rows -->
                             <?php
 
                             if (count($bugs) == 0) {
@@ -71,7 +64,7 @@ if (isset($_POST['raise'])) {
                                     <tbody>
 
 
-                                        <!-- End Table with stripped rows -->
+
                                         <?php
                                         foreach ($bugs as $bug) {
                                         ?>
@@ -126,15 +119,15 @@ if (isset($_POST['raise'])) {
             </div>
         </section>
 
-    </main><!-- End #main -->
+    </main>
 </div>
 
-<!-- ======= Footer ======= -->
-<!-- End Footer -->
+
+
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-<!-- Vendor JS Files -->
+
 <script src="../views/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
 <script src="../views/admin/assets/vendor/chart.js/chart.umd.js"></script>
 <script src="../views/admin/assets/vendor/echarts/echarts.min.js"></script>
@@ -145,7 +138,7 @@ if (isset($_POST['raise'])) {
 <script src="../views/js/bootstrap.bundle.min.js"></script>
 <script src="../views/js/main.js"></script>
 
-<!-- Template Main JS File -->
+
 <script src="../views/admin/assets/js/main.js"></script>
 <script src="../views/js/bootstrap.bundle.min.js"></script>
 <script src="../views/js/main.js"></script>

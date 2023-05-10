@@ -9,7 +9,6 @@ if (!isset($_SESSION['userType'])) {
     if ($_SESSION['userType'] != 0) {
         header("location: login.php");
     }
-    // include "../views/includes/navbar.php";
     require_once '../models/user.php';
     require_once '../controllers/MainController.php';
     require_once '../models/staff.php';
@@ -48,17 +47,17 @@ if (!isset($_SESSION['userType'])) {
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-    <!-- Favicons -->
+
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
+
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <!-- <link href="../views/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- <link href="../views/admin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"> -->
+
+
+
     <link href="../views/admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="../views/admin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
     <link href="../views/admin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
@@ -70,16 +69,8 @@ if (!isset($_SESSION['userType'])) {
     <link rel="stylesheet" href="../views/css/style.css">
     <link rel="stylesheet" href="../views/css/bootstrap.min.css">
 
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Mar 09 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -107,18 +98,11 @@ if (!isset($_SESSION['userType'])) {
                                 Profile
                             </a>
                             <ul class="dropdown-menu">
-                                <!-- <li><a class="dropdown-item" href="show-bug.php">Solve bug</a></li> -->
-                                <!-- <li>
-                                    <hr class="dropdown-divider">
-                                </li> -->
+
                                 <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <!-- <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form> -->
                 </div>
             </div>
         </div>
@@ -128,7 +112,7 @@ if (!isset($_SESSION['userType'])) {
 
             <div class="pagetitle">
                 <h1>Bug Table</h1>
-            </div><!-- End Page Title -->
+            </div>
 
             <section class="section">
                 <div class="row">
@@ -136,16 +120,12 @@ if (!isset($_SESSION['userType'])) {
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <!-- <h5 class="card-title">All staff is here</h5> -->
+
                                     <div class="stuff-operator">
-                                        <!-- <a href="add-staff.php">
-                                            <button type="button" class="btn btn-primary add-button">Add new
-                                                staff</button>
-                                        </a> -->
                                     </div>
                                 </div>
 
-                                <!-- Table with stripped rows -->
+
                                 <?php
                                 if (count($bugs) == 0) {
                                 ?>
@@ -180,7 +160,7 @@ if (!isset($_SESSION['userType'])) {
                                         <tbody>
 
 
-                                            <!-- End Table with stripped rows -->
+
                                             <?php
                                             foreach ($bugs as $bug) {
                                             ?>
@@ -235,15 +215,7 @@ if (!isset($_SESSION['userType'])) {
                                 }
 
                                 ?>
-                                <?php
-                                //  if ($deleted == true) {
-                                ?>
-                                <!-- <div class="alert alert-success" role="alert">
-                                        the staff has been deleted
-                                    </div> -->
-                                <?php
-                                // }
-                                ?>
+
 
                             </div>
                         </div>
@@ -252,7 +224,7 @@ if (!isset($_SESSION['userType'])) {
                 </div>
             </section>
 
-        </main><!-- End #main -->
+        </main>
     </div>
     <script src="../views/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="../views/admin/assets/vendor/chart.js/chart.umd.js"></script>
@@ -264,7 +236,7 @@ if (!isset($_SESSION['userType'])) {
     <script src="../views/js/bootstrap.bundle.min.js"></script>
     <script src="../views/js/main.js"></script>
 
-    <!-- Template Main JS File -->
+
     <script src="../views/admin/assets/js/main.js"></script>
 </body>
 
